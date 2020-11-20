@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+
+html {
+  body {
+      margin: 0 auto;
+      width: 500px;
+  }
+}
+
+.ant-btn.ant-btn-default{
+  margin-right: 10px;
+}
