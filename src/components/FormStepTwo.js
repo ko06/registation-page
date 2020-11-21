@@ -21,7 +21,7 @@ const StepTwo = Form.create({
     }
     return (
         <Form onSubmit={validateInput}>
-            <Form.Item label="Company name">
+            <Form.Item label="Company Name">
                 {getFieldDecorator('comapany_name', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
                     initialValue: props.comapany_name
@@ -33,13 +33,13 @@ const StepTwo = Form.create({
                     initialValue: props.email_id
                 })(<Input placeholder="Input your value here" />)}
             </Form.Item>
-            <Form.Item label="Job title">
+            <Form.Item label="Job Title">
                 {getFieldDecorator('job_title', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
                     initialValue: props.job_title
                 })(<Input placeholder="Input your value here" />)}
             </Form.Item>
-            <Form.Item label="Years of experiance">
+            <Form.Item label="Years of Experiance">
                 {getFieldDecorator('years_of_experiance', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
                     initialValue: props.job_title

@@ -16,8 +16,7 @@ html {
         font-family: 'Lato', sans-serif;
         font-family: 'Roboto', sans-serif;
         font-family: 'Open Sans', sans-serif;
-        margin-top: $top-bar-height;
-        // height: calc(#{$top-bar-height} - 100%);
+        margin-top: $top-bar-height; // height: calc(#{$top-bar-height} - 100%);
         height: 100%;
     }
 }
@@ -75,6 +74,7 @@ html {
             opacity: 0.8;
             border-bottom: 3px solid transparent;
             margin: 0 60px;
+            cursor: default;
         }
         .ant-tabs-tab-active {
             opacity: 1;
@@ -204,19 +204,60 @@ html {
 }
 
 //button
-.ant-btn-primary,.ant-btn-primary:hover, .ant-btn-primary:focus {
+.ant-btn-primary,
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
     width: 100%;
     background-color: $secondary-background-color;
     border-color: $primary-border-color;
-}
-.ant-btn-primary:hover, .ant-btn-primary:focus{
-  opacity: 0.9;
-}
-.ant-form-item-children{
-  display: flex;
+    height: 40px;
 }
 
-.ant-btn.ant-btn-default{
-  background-color:#ddd4d461;
-  color: $primary-text-color;
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+    opacity: 0.9;
+}
+
+.ant-form-item-children {
+    display: flex;
+}
+
+.ant-btn.ant-btn-default {
+    background-color: #ddd4d461;
+    color: $primary-text-color;
+    height: 40px;
+}
+
+// OTP box 
+.otp-container {
+    display: flex;
+    margin: 10px 0 15px;
+    .otp-box {
+        display: flex;
+        height: 50px;
+        &:not(:last-child){
+          margin-right: 30px;
+        }
+    }
+}
+
+h4{
+  text-align: center
+}
+
+.ant-divider-horizontal{
+  margin: 24px 0 24px;
+}
+
+.ant-form-item-label > label::after{
+    display: inline-block;
+    margin-right: 4px;
+    color: #f5222d;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: '*';
+}
+.ant-form-item-label > label::before{
+   display: none;
 }

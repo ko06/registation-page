@@ -23,7 +23,7 @@ class FinalForm extends Component {
             validate: false,
         },
         step_final_fields: {
-            otp: '',
+            otp: [],
             validate: false,
         },
     }
@@ -48,8 +48,20 @@ class FinalForm extends Component {
         }, () => this.storeLocalStorage())
     }
 
+    handleOTPMessage = (position, event) => {
+        const { step_final_fields } = this.state;
+        let otpMessage = [...this.state.step_final_fields.otp]
+        otpMessage[position] = event.target.value;
+    
+        this.setState({
+            step_final_fields: {
+                ...step_final_fields,
+                otp: otpMessage,
+            }
+        })
+    }
+
     storeLocalStorage = () => {
-        debugger;
         var storedData = JSON.parse(localStorage.getItem("names")) || [];
         storedData.push(this.state);
         localStorage.setItem("names", JSON.stringify(storedData));
@@ -89,8 +101,7 @@ class FinalForm extends Component {
     }
 
     tabSwitch = (key) => {
-        this.setState({ step: +key });
-
+        // this.setState({ step: +key });
         // let { step } = this.state;
         // if(step > +key){
         //   this.setState({ step: +key });
@@ -134,7 +145,7 @@ class FinalForm extends Component {
                         {<div className={'form-header'}>
                             <h1>Enter your OTP</h1>
                             <h4> For your security, we need ti verify.We sent a 5-digit code to name@domain.com. Please enter it below</h4></div>}
-                        <StepFinal {...step_final_fields} handleConfirmButton={this.handleConfirmButton} handleBackButton={this.handleBackButton} submittedValues={this.getFinalStepValue} />
+                        <StepFinal {...step_final_fields} handleConfirmButton={this.handleConfirmButton} handleOTPMessage={this.handleOTPMessage} handleBackButton={this.handleBackButton} submittedValues={this.getFinalStepValue} />
 
                     </div>
                 </TabPane>
