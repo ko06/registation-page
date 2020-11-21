@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button, Select, Radio } from 'antd';
+import CountryPhoneCode from "antd-country-phone-input";
 
 const { Option } = Select;
 
@@ -62,7 +63,12 @@ const StepOne = Form.create({
                     </Select>,
                 )}
             </Form.Item>
-
+            <Form.Item className={'country-code'} label={'Phone'}>
+                {getFieldDecorator("country_phone", {
+                    rules: [
+                        { required: true, message: 'Please select a Phone number' }],
+                })(<CountryPhoneCode />)}
+            </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
                     Next

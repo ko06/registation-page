@@ -235,21 +235,21 @@ html {
     .otp-box {
         display: flex;
         height: 50px;
-        &:not(:last-child){
-          margin-right: 30px;
+        &:not(:last-child) {
+            margin-right: 30px;
         }
     }
 }
 
-h4{
-  text-align: center
+h4 {
+    text-align: center
 }
 
-.ant-divider-horizontal{
-  margin: 24px 0 24px;
+.ant-divider-horizontal {
+    margin: 24px 0 24px;
 }
 
-.ant-form-item-label > label::after{
+.ant-form-item-label>label::after {
     display: inline-block;
     margin-right: 4px;
     color: #f5222d;
@@ -258,6 +258,40 @@ h4{
     line-height: 1;
     content: '*';
 }
-.ant-form-item-label > label::before{
-   display: none;
+
+.ant-form-item-label>label::before {
+    display: none;
+}
+
+//country code 
+.country-code {
+    .ant-input-affix-wrapper .ant-input-prefix {
+        left: 0;
+    }
+    .ant-select-selection--single {
+        height: 34px;
+        left: 2px;
+        background: transparent;
+        border: none;
+        &:hover {
+            border-color: transparent
+        }
+    }
+    .ant-input:focus, .ant-input:hover, .ant-input:active, .ant-select-selection:focus, .ant-select-selection:hover, .ant-select-selection:active{
+      box-shadow: none;
+    }
+    .ant-input-affix-wrapper .ant-input-prefix :not(.anticon),
+    .ant-input-affix-wrapper .ant-input-suffix :not(.anticon) {
+        line-height: 2.5;
+    }
+    .ant-input-affix-wrapper .ant-input:not(:first-child) {
+        padding-left: 90px;
+    }
+    .ant-input-affix-wrapper {
+        .ant-select .ant-select-enabled {
+          .ant-select-selection  .ant-select-selection--single{
+              border: none
+            }
+        }
+    }
 }

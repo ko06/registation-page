@@ -2518,6 +2518,11 @@ ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
+antd-country-phone-input@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/antd-country-phone-input/-/antd-country-phone-input-3.0.2.tgz#7162c10aae7fe33c644e4ef2a60cf64788a0d609"
+  integrity sha512-mjJjD3HbDLuApMyG76EJtxZiW9M4fDi8SEzkoyIpfxJmB5Mo1TLxzxvGZxNx8Yie3ysivoa2gLZv2yNiWlQk/g==
+
 antd@^3.20.5:
   version "3.26.20"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.26.20.tgz#f3f570efaaa5950a144942f21eb2aaaa088e9407"
