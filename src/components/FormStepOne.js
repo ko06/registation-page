@@ -46,11 +46,18 @@ const StepOne = Form.create({
                     <Select
                         placeholder="Select property type"
                         className={'form-item select-md'}
-                        suffixIcon={<i className={'flaticon-down-arrow'} />}
+                        optionFilterProp="children"
+                        showSearch={true}
+                        filterOption={(input, option) =>
+                            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }
                     >
                         <Option value="tamilnadu">TamilNadu</Option>
                         <Option value="Mumbai">Mumbai</Option>
                         <Option value="Delhi">Delhi</Option>
+                        <Option value="goa">goa</Option>
+                        <Option value="jammu">Jammu</Option>
+                        <Option value="karnadaga">Karnadaga</Option>
 
                     </Select>,
                 )}

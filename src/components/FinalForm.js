@@ -44,7 +44,6 @@ class FinalForm extends Component {
             step_final_fields: {
                 ...step_final_fields,
                 ...values,
-                validate: true,
             }
         })
     }
