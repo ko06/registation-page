@@ -13,13 +13,14 @@ class FinalForm extends Component {
         step_one_fields: {
             full_name: '',
             validate: false,
+            country_name: "US",
         },
         step_two_fields: {
             comapany_name: '',
             email_id: '',
-            job_title:'',
-            years_of_experiance:'',
-            terms:'',
+            job_title: '',
+            years_of_experiance: '',
+            terms: '',
             validate: false,
         },
         step_final_fields: {
@@ -40,6 +41,7 @@ class FinalForm extends Component {
 
     handleConfirmButton = (values) => {
         const { step_final_fields } = this.state;
+        const { showPage } = this.props;
         this.setState({
             step_final_fields: {
                 ...step_final_fields,
@@ -52,7 +54,7 @@ class FinalForm extends Component {
         const { step_final_fields } = this.state;
         let otpMessage = [...this.state.step_final_fields.otp]
         otpMessage[position] = event.target.value;
-    
+
         this.setState({
             step_final_fields: {
                 ...step_final_fields,
@@ -74,7 +76,7 @@ class FinalForm extends Component {
                 ...step_final_fields,
                 ...values
             }
-        }, () => console.log(this.state));
+        });
     }
 
     getStepOneValue = (values) => {
@@ -85,7 +87,7 @@ class FinalForm extends Component {
                 ...values,
                 validate: true
             }
-        }, () => console.log(this.state))
+        })
 
     }
 
@@ -97,25 +99,35 @@ class FinalForm extends Component {
                 ...values,
                 validate: true,
             }
-        },  () => console.log(this.state))
+        }, () => console.log(this.state))
     }
 
     tabSwitch = (key) => {
-        // this.setState({ step: +key });
+        this.setState({ step: +key });
         // let { step } = this.state;
         // if(step > +key){
         //   this.setState({ step: +key });
         // }   
         //console.log(key);
     }
+    onSelectFlag = key => {
+        const { step_one_fields } = this.state;
+        debugger;
+        this.setState({
+            step_one_fields: {
+                ...step_one_fields,
+                country_name: key,
+            }
+        })
+    }
 
     getTopTabIcon = (form, info, currentStep) => {
         let { step } = this.state;
-        return(<div>
+        return (<div>
             <span className={step === currentStep ? 'number active' : form.validate
-             ? 'number is-okay' : 'number'}>
-             { (form.validate && step !== currentStep) ? 'L' : currentStep}</span>
-             <span>{info}</span>
+                ? 'number is-okay' : 'number'}>
+                {(form.validate && step !== currentStep) ? 'L' : currentStep}</span>
+            <span>{info}</span>
         </div>)
     }
 
@@ -128,7 +140,7 @@ class FinalForm extends Component {
                         {<div className={'form-header'}>
                             <h1>Add your personal details</h1>
                             <h4> Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4></div>}
-                        <StepOne {...step_one_fields} handleNextButton={this.handleNextButton} submittedValues={this.getStepOneValue} />
+                        <StepOne {...step_one_fields} onSelectFlag={this.onSelectFlag} handleNextButton={this.handleNextButton} submittedValues={this.getStepOneValue} />
                     </div>
                 </TabPane>
                 <TabPane tab={this.getTopTabIcon(step_two_fields, 'Company details', 2)} key="2">

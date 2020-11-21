@@ -1,6 +1,9 @@
 import React from 'react'
 import { Form, Input, Button, Select, Radio } from 'antd';
 import CountryPhoneCode from "antd-country-phone-input";
+import ReactFlagsSelect from 'react-flags-select';
+import 'react-flags-select/css/react-flags-select.css';
+
 
 const { Option } = Select;
 
@@ -37,6 +40,11 @@ const StepOne = Form.create({
                         <Radio.Button value="other">Other</Radio.Button>
                     </Radio.Group>,
                 )}
+            </Form.Item>
+            <Form.Item>
+            <ReactFlagsSelect
+             defaultCountry="US"
+             onSelect={props.onSelectFlag} />
             </Form.Item>
             <Form.Item label={'State'}>
                 {getFieldDecorator('state', {

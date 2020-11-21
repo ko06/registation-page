@@ -235,6 +235,7 @@ html {
     .otp-box {
         display: flex;
         height: 50px;
+        text-align: center;
         &:not(:last-child) {
             margin-right: 30px;
         }
@@ -277,8 +278,13 @@ h4 {
             border-color: transparent
         }
     }
-    .ant-input:focus, .ant-input:hover, .ant-input:active, .ant-select-selection:focus, .ant-select-selection:hover, .ant-select-selection:active{
-      box-shadow: none;
+    .ant-input:focus,
+    .ant-input:hover,
+    .ant-input:active,
+    .ant-select-selection:focus,
+    .ant-select-selection:hover,
+    .ant-select-selection:active {
+        box-shadow: none;
     }
     .ant-input-affix-wrapper .ant-input-prefix :not(.anticon),
     .ant-input-affix-wrapper .ant-input-suffix :not(.anticon) {
@@ -289,9 +295,45 @@ h4 {
     }
     .ant-input-affix-wrapper {
         .ant-select .ant-select-enabled {
-          .ant-select-selection  .ant-select-selection--single{
-              border: none
+            .ant-select-selection .ant-select-selection--single {
+                border: none
             }
         }
     }
+}
+
+//flag
+.flag-select {
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  height: 41px;
+  line-height: 2.1;
+  border-radius: 4px;
+  &:hover, &:focus, &:active {
+    border: 1px solid $primary-border-color !important;
+  }
+    .flag-select__btn {
+        font-size: 14px !important;
+        &:focus{
+          outline: none
+        }
+    }
+}
+
+.flag-select__btn:after{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.flag-select__option:not(.flag-select__option--placeholder):hover, .flag-select__option:not(.flag-select__option--placeholder):focus{
+  background-color: rgba(237, 91, 0, 0.6) !important;
+}
+
+//Upload
+.upload-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }

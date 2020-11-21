@@ -1,5 +1,35 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Upload, Icon, message } from 'antd';
+
+
+function normFile(e) {
+    console.log('Upload event:', e);
+    debugger;
+    if (Array.isArray(e)) {
+        return e;
+    }
+    return e && e.fileList;
+};
+
+const uploadButton = (
+    <div>
+        <Icon type={'plus'} />
+        <div className="ant-upload-text">Upload</div>
+    </div>
+);
+
+function beforeUpload(file) {
+    const isJPG = file.type === 'image/jpeg';
+    if (!isJPG) {
+        message.error('You can only upload JPG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+        message.error('Image must smaller than 2MB!');
+    }
+    return isJPG && isLt2M;
+}
+
 
 const StepTwo = Form.create({
     name: 'step_two'
@@ -21,6 +51,28 @@ const StepTwo = Form.create({
     }
     return (
         <Form onSubmit={validateInput}>
+            <Form.Item className={'upload-container'} label="Upload your company logo">
+                {getFieldDecorator('upload', {
+                    valuePropName: 'fileList',
+                    getValueFromEvent: normFile,
+                    rules: [
+                        {
+                          required: true, message: 'Please update your logo!'
+                        }
+                      ]
+                })(
+                    <Upload
+                        name="avatar"
+                        listType="picture-card"
+                        className="avatar-uploader"
+                        showUploadList={false}
+                        action="//jsonplaceholder.typicode.com/posts/"
+                        beforeUpload={beforeUpload}
+                    >
+                        {uploadButton}
+                    </Upload>,
+                )}
+            </Form.Item>
             <Form.Item label="Company Name">
                 {getFieldDecorator('comapany_name', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
@@ -53,7 +105,7 @@ const StepTwo = Form.create({
                     ],
                 })(
                     <Checkbox terms="checked">
-                         I accept the <span className={'secondary-color'}>Terms and Conditions</span>
+                        I accept the <span className={'secondary-color'}>Terms and Conditions</span>
                     </Checkbox>,
                 )}
             </Form.Item>
