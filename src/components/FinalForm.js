@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-
 import StepOne from './FormStepOne';
 import StepTwo from './FormStepTwo';
 import StepFinal from './FormStepFinal';
+import { Tabs } from 'antd';
+
+const { TabPane } = Tabs;
+
 
 class FinalForm extends Component {
     state = {
@@ -35,7 +38,7 @@ class FinalForm extends Component {
                 ...step_final_fields,
                 ...values
             }
-        },  () => console.log(this.state));
+        }, () => console.log(this.state));
     }
 
     getFinalStepValue = (values) => {
@@ -68,33 +71,36 @@ class FinalForm extends Component {
         })
     }
 
+    tabSwitch = (key) => {
+        //this.setState({ step: key });
+        //console.log(key);
+    }
+
     render() {
         const { step, step_one_fields, step_two_fields, step_final_fields } = this.state;
-        if (step === 1) {
-            return (
-                <div>
-                    {<h1> STEP 1 </h1>}
-                    <StepOne {...step_one_fields} handleNextButton={this.handleNextButton} submittedValues={this.getStepOneValue} />
-                </div>
-            );
-        }
-        else if (step === 2) {
-            return (
-                <div>
-                    {<h1> STEP 2 </h1>}
-                    <StepTwo {...step_two_fields} handleNextButton={this.handleNextButton} handleBackButton={this.handleBackButton} submittedValues={this.getStepTwoValue} />
-                </div>
-            );
-        }
-        else {
-            return (
-                <div>
-                    {<h1> FINAL STEP </h1>}
-                    <StepFinal {...step_final_fields} handleConfirmButton ={this.handleConfirmButton} handleBackButton = {this.handleBackButton} submittedValues = {this.getFinalStepValue} />
-                
-                </div>
-            );
-        }
+        return (
+            <Tabs defaultActiveKey="1" activeKey={step.toString()} onChange={this.tabSwitch}>
+                <TabPane tab="Tab 1" key="1">
+                    <div>
+                        {<h1> STEP 1 </h1>}
+                        <StepOne {...step_one_fields} handleNextButton={this.handleNextButton} submittedValues={this.getStepOneValue} />
+                    </div>
+                </TabPane>
+                <TabPane tab="Tab 2"  key="2">
+                    <div>
+                        {<h1> STEP 2 </h1>}
+                        <StepTwo {...step_two_fields} handleNextButton={this.handleNextButton} handleBackButton={this.handleBackButton} submittedValues={this.getStepTwoValue} />
+                    </div>
+                </TabPane>
+                <TabPane tab="Tab 3"  key="3">
+                    <div>
+                        {<h1> FINAL STEP </h1>}
+                        <StepFinal {...step_final_fields} handleConfirmButton={this.handleConfirmButton} handleBackButton={this.handleBackButton} submittedValues={this.getFinalStepValue} />
+
+                    </div>
+                </TabPane>
+            </Tabs>
+        )
     }
 }
 
