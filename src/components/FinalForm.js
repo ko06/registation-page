@@ -16,6 +16,10 @@ class FinalForm extends Component {
         },
         step_two_fields: {
             comapany_name: '',
+            email_id: '',
+            job_title:'',
+            years_of_experiance:'',
+            terms:'',
             validate: false,
         },
         step_final_fields: {
@@ -52,7 +56,7 @@ class FinalForm extends Component {
                 ...step_final_fields,
                 ...values
             }
-        });
+        }, () => console.log(this.state));
     }
 
     getStepOneValue = (values) => {
@@ -75,10 +79,12 @@ class FinalForm extends Component {
                 ...values,
                 validate: true,
             }
-        })
+        },  () => console.log(this.state))
     }
 
     tabSwitch = (key) => {
+        this.setState({ step: +key });
+
         // let { step } = this.state;
         // if(step > +key){
         //   this.setState({ step: +key });

@@ -27,7 +27,7 @@ const StepOne = Form.create({
             <Form.Item label={'Gender'}>
                 {getFieldDecorator('gender', {
                     rules: [
-                        { required: true, message: 'Please select a property type' },
+                        { required: true, message: 'Please select a gender type' },
                     ],
                 })(
                     <Radio.Group>
@@ -40,7 +40,7 @@ const StepOne = Form.create({
             <Form.Item label={'State'}>
                 {getFieldDecorator('state', {
                     rules: [
-                        { required: true, message: 'Please select a property type' },
+                        { required: true, message: 'Please select a state' },
                     ],
                 })(
                     <Select

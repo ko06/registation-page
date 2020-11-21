@@ -114,6 +114,9 @@ html {
     &:last-child {
         border-radius: unset !important;
     }
+    &:hover {
+      color: $scondary-text-color;
+    }
     &.ant-radio-button-wrapper-checked {
         color: #fff;
         background-color: $secondary-background-color;
@@ -125,16 +128,20 @@ html {
     }
 }
 
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child,
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
-    border-color: $secondary-border-color;
+    border-color: $primary-border-color !important;
 }
 
-.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
-    background-color: $secondary-background-color;
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before, {
+    background-color: $secondary-background-color !important;
 }
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
-    outline: none;
+    outline: none !important;
+}
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  box-shadow: none;
 }
 
 
@@ -142,6 +149,19 @@ html {
 .ant-row.ant-form-item{
   margin-bottom: 15px
 }
-.ant-input{
-  height: 42px;
+
+.ant-input {
+  height: 37px;
+}
+
+.ant-select-selection--single{
+  height: 38px;
+}
+
+.ant-select-selection__rendered{
+  line-height: 35px;
+}
+
+.secondary-color {
+  color: $scondary-text-color;
 }

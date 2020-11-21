@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
 
 const StepTwo = Form.create({
     name: 'step_two'
@@ -21,12 +21,43 @@ const StepTwo = Form.create({
     }
     return (
         <Form onSubmit={validateInput}>
-            <Form.Item label="Field One">
+            <Form.Item label="Company name">
                 {getFieldDecorator('comapany_name', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
                     initialValue: props.comapany_name
                 })(<Input placeholder="Input your value here" />)}
             </Form.Item>
+            <Form.Item label="Email id">
+                {getFieldDecorator('email_id', {
+                    rules: [{ required: true, message: 'Cannot be empty!' }],
+                    initialValue: props.email_id
+                })(<Input placeholder="Input your value here" />)}
+            </Form.Item>
+            <Form.Item label="Job title">
+                {getFieldDecorator('job_title', {
+                    rules: [{ required: true, message: 'Cannot be empty!' }],
+                    initialValue: props.job_title
+                })(<Input placeholder="Input your value here" />)}
+            </Form.Item>
+            <Form.Item label="Years of experiance">
+                {getFieldDecorator('years_of_experiance', {
+                    rules: [{ required: true, message: 'Cannot be empty!' }],
+                    initialValue: props.job_title
+                })(<Input placeholder="Input your value here" />)}
+            </Form.Item>
+
+            <Form.Item label={null}>
+                {getFieldDecorator('terms', {
+                    rules: [
+                        { required: true, message: 'Please accept terms and condition' },
+                    ],
+                })(
+                    <Checkbox terms="checked">
+                         I accept the <span className={'secondary-color'}>Terms and Conditions</span>
+                    </Checkbox>,
+                )}
+            </Form.Item>
+
             <Form.Item>
                 <Button type="default" onClick={storeValues} >
                     Back
