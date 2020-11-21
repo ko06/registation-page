@@ -16,6 +16,7 @@ html {
         font-family: 'Roboto', sans-serif;
         font-family: 'Open Sans', sans-serif;
         margin-top: $top-bar-height;
+        height: calc(#{$top-bar-height} - 100%);
     }
 }
 
@@ -32,9 +33,22 @@ html {
 /* tabs styles */
 
 .form-area {
-    background: #fff;
-    width: 500px;
-    padding: $lg-padding
+    max-width: 500px;
+    .form-header {
+        padding: 30px 0 10px;
+        h1,
+        h4 {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+    }
+    form {
+        background: #fff;
+        padding: $lg-padding;
+    }
 }
 
 .ant-tabs-bar.ant-tabs-top-bar {
@@ -49,20 +63,85 @@ html {
         display: flex;
         justify-content: center;
         .ant-tabs-tab {
-            padding: 23px 16px;
+            padding: 19px 16px;
         }
-        .ant-tabs-tab-active,  .ant-tabs-tab {
+        .ant-tabs-tab-active,
+        .ant-tabs-tab {
             color: #fff;
             font-weight: 600;
             opacity: 0.8;
             border-bottom: 3px solid transparent;
+            margin: 0 60px;
         }
         .ant-tabs-tab-active {
-          opacity: 1;
-          border-color: $secondary-border-color; 
+            opacity: 1;
+            border-color: $secondary-border-color;
         }
-        .ant-tabs-ink-bar{
-          display: none !important;
+        .ant-tabs-ink-bar {
+            display: none !important;
+        }
+        .number {
+            height: 30px;
+            width: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            text-align: center;
+            line-height: 1.6;
+            padding: 4px 5px;
+            background-color: rgba(45, 62, 76, 1);
+            opacity: 0.9;
+            &.active {
+                background-color: $secondary-background-color;
+                opacity: 1;
+            }
+            &.is-okay {
+                transform: rotate(40deg) scaleX(-1);
+                opacity: 1;
+            }
+        }
+        .number+span {
+            margin-left: 10px;
         }
     }
+}
+
+// Radio
+.ant-radio-button-wrapper {
+    &:not(:first-child) {
+        margin: 0 10px;
+    }
+    &:first-child,
+    &:last-child {
+        border-radius: unset !important;
+    }
+    &.ant-radio-button-wrapper-checked {
+        color: #fff;
+        background-color: $secondary-background-color;
+        border-color: $primary-border-color;
+        &:hover {
+          color: #fff;
+          border-color: $primary-border-color;
+        }
+    }
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+    border-color: $secondary-border-color;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+    background-color: $secondary-background-color;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+    outline: none;
+}
+
+
+// Form
+.ant-row.ant-form-item{
+  margin-bottom: 15px
+}
+.ant-input{
+  height: 42px;
 }
