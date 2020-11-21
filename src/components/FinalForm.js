@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import StepOne from './FormStepOne';
 import StepTwo from './FormStepTwo';
 import StepFinal from './FormStepFinal';
-import { Tabs } from 'antd';
+import { Tabs, message } from 'antd';
 
 const { TabPane } = Tabs;
 
@@ -67,6 +67,8 @@ class FinalForm extends Component {
         var storedData = JSON.parse(localStorage.getItem("names")) || [];
         storedData.push(this.state);
         localStorage.setItem("names", JSON.stringify(storedData));
+        message.success('You info stored in local storage!');
+        // this.props.showPage()
     }
 
     getFinalStepValue = (values) => {
