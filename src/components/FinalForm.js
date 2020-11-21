@@ -45,7 +45,14 @@ class FinalForm extends Component {
                 ...step_final_fields,
                 ...values,
             }
-        })
+        }, () => this.storeLocalStorage())
+    }
+
+    storeLocalStorage = () => {
+        debugger;
+        var storedData = JSON.parse(localStorage.getItem("names")) || [];
+        storedData.push(this.state);
+        localStorage.setItem("names", JSON.stringify(storedData));
     }
 
     getFinalStepValue = (values) => {
