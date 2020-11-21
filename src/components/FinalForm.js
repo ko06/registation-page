@@ -72,29 +72,32 @@ class FinalForm extends Component {
     }
 
     tabSwitch = (key) => {
-        //this.setState({ step: key });
+        this.setState({ step: +key });
         //console.log(key);
     }
 
     render() {
         const { step, step_one_fields, step_two_fields, step_final_fields } = this.state;
         return (
-            <Tabs defaultActiveKey="1" activeKey={step.toString()} onChange={this.tabSwitch}>
-                <TabPane tab="Tab 1" key="1">
-                    <div>
-                        {<h1> STEP 1 </h1>}
+            <Tabs defaultActiveKey="1" animated={false} activeKey={step.toString()} onChange={this.tabSwitch}>
+                <TabPane tab="Personal Details" key="1">
+                    <div className={'form-area'}>
+                        {<><h1>  Add your personal details</h1>
+                            <h3> Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3></>}
                         <StepOne {...step_one_fields} handleNextButton={this.handleNextButton} submittedValues={this.getStepOneValue} />
                     </div>
                 </TabPane>
-                <TabPane tab="Tab 2"  key="2">
-                    <div>
-                        {<h1> STEP 2 </h1>}
+                <TabPane tab="Company Details" key="2">
+                    <div  className={'form-area'}>
+                        {<><h1>  Add your company details</h1>
+                            <h3> Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3></>}
                         <StepTwo {...step_two_fields} handleNextButton={this.handleNextButton} handleBackButton={this.handleBackButton} submittedValues={this.getStepTwoValue} />
                     </div>
                 </TabPane>
-                <TabPane tab="Tab 3"  key="3">
-                    <div>
-                        {<h1> FINAL STEP </h1>}
+                <TabPane tab="Email Verification" key="3">
+                    <div  className={'form-area'}>
+                    {<><h1>Enter your OTP</h1>
+                        <h3> Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3></>}
                         <StepFinal {...step_final_fields} handleConfirmButton={this.handleConfirmButton} handleBackButton={this.handleBackButton} submittedValues={this.getFinalStepValue} />
 
                     </div>

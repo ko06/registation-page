@@ -1,12 +1,68 @@
 @import '~antd/dist/antd.css';
-
+$primary-background-color: #2e4b64;
+$body-bg: #f9fafa;
+$secondary-background-color: #ed5900;
+$primary-text-color: #0a0909;
+$scondary-text-color: #ed5900;
+$primary-border-color: #ed5900;
+$secondary-border-color: #fff;
+$top-bar-height: 70px;
+$lg-padding: 30px;
 html {
-  body {
-      margin: 0 auto;
-      width: 500px;
-  }
+    body {
+        color: $primary-text-color;
+        background-color: $body-bg;
+        font-family: 'Lato', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        margin-top: $top-bar-height;
+    }
 }
 
-.ant-btn.ant-btn-default{
-  margin-right: 10px;
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ant-btn.ant-btn-default {
+    margin-right: 10px;
+}
+
+/* tabs styles */
+
+.form-area {
+    background: #fff;
+    width: 500px;
+    padding: $lg-padding
+}
+
+.ant-tabs-bar.ant-tabs-top-bar {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: $primary-background-color;
+    height: $top-bar-height;
+    .ant-tabs-nav {
+        display: flex;
+        justify-content: center;
+        .ant-tabs-tab {
+            padding: 23px 16px;
+        }
+        .ant-tabs-tab-active,  .ant-tabs-tab {
+            color: #fff;
+            font-weight: 600;
+            opacity: 0.8;
+            border-bottom: 3px solid transparent;
+        }
+        .ant-tabs-tab-active {
+          opacity: 1;
+          border-color: $secondary-border-color; 
+        }
+        .ant-tabs-ink-bar{
+          display: none !important;
+        }
+    }
 }

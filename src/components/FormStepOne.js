@@ -15,7 +15,7 @@ const StepOne = Form.create({
     }
     return (
         <Form onSubmit={validateInput}>
-            <Form.Item label="Full Name">
+            <Form.Item label="Full Name">        
                 {getFieldDecorator('full_name', {
                     rules: [{ required: true, message: 'Cannot be empty!'}],
                     initialValue: props.full_name

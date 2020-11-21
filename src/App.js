@@ -4,7 +4,7 @@ import FinalForm from './components/FinalForm'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <FinalForm/>
     </div>
   );
