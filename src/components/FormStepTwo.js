@@ -8,6 +8,7 @@ function normFile(e) {
      if (!isJPG) {
          return null;
      }
+    message.success('Logo uploaded successfully!')
     return e.file;
 };
 

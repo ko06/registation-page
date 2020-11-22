@@ -68,7 +68,7 @@ class FinalForm extends Component {
         storedData.push(this.state);
         localStorage.setItem("names", JSON.stringify(storedData));
         message.success('You info stored in local storage!');
-        // this.props.showPage()
+        this.props.showPage()
     }
 
     getFinalStepValue = (values) => {
@@ -109,7 +109,6 @@ class FinalForm extends Component {
     }
     onSelectFlag = key => {
         const { step_one_fields } = this.state;
-        debugger;
         this.setState({
             step_one_fields: {
                 ...step_one_fields,
