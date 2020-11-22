@@ -105,12 +105,7 @@ class FinalForm extends Component {
     }
 
     tabSwitch = (key) => {
-        this.setState({ step: +key });
-        // let { step } = this.state;
-        // if(step > +key){
-        //   this.setState({ step: +key });
-        // }   
-        //console.log(key);
+        
     }
     onSelectFlag = key => {
         const { step_one_fields } = this.state;
