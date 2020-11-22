@@ -1,14 +1,7 @@
 @import '~antd/dist/antd.css';
-$primary-background-color: #2e4b64;
-$body-bg: #f9fafa;
-$secondary-background-color: #ed5900;
-$primary-text-color: #0a0909;
-$scondary-text-color: #ed5900;
-$primary-border-color: #ed5900;
-$secondary-border-color: #fff;
-$top-bar-height: 70px;
-$lg-padding: 30px;
-$ZIndexLevel-1: 1000;
+@import "variable";
+@import "tab";
+//global.scss
 html {
     height: 100%;
     body {
@@ -32,84 +25,7 @@ html {
     margin-right: 10px;
 }
 
-/* tabs styles */
-
-.form-area {
-    max-width: 500px;
-    .form-header {
-        padding: 30px 0 10px;
-        h1,
-        h4 {
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-    }
-    form {
-        background: #fff;
-        padding: $lg-padding;
-    }
-}
-
-.ant-tabs-bar.ant-tabs-top-bar {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: $ZIndexLevel-1;
-    background: $primary-background-color;
-    height: $top-bar-height;
-    .ant-tabs-nav {
-        display: flex;
-        justify-content: center;
-        .ant-tabs-tab {
-            padding: 19px 16px;
-        }
-        .ant-tabs-tab-active,
-        .ant-tabs-tab {
-            color: #fff;
-            font-weight: 600;
-            opacity: 0.8;
-            border-bottom: 3px solid transparent;
-            margin: 0 60px;
-            cursor: default;
-        }
-        .ant-tabs-tab-active {
-            opacity: 1;
-            border-color: $secondary-border-color;
-        }
-        .ant-tabs-ink-bar {
-            display: none !important;
-        }
-        .number {
-            height: 30px;
-            width: 30px;
-            border-radius: 15px;
-            display: inline-block;
-            text-align: center;
-            line-height: 1.6;
-            padding: 4px 5px;
-            background-color: rgba(45, 62, 76, 1);
-            opacity: 0.9;
-            &.active {
-                background-color: $secondary-background-color;
-                opacity: 1;
-            }
-            &.is-okay {
-                transform: rotate(40deg) scaleX(-1);
-                opacity: 1;
-            }
-        }
-        .number+span {
-            margin-left: 10px;
-        }
-    }
-}
-
-// Radio
+// Radio.scss
 .ant-radio-button-wrapper {
     &:not(:first-child) {
         margin: 0 10px;
@@ -150,7 +66,7 @@ html {
     box-shadow: none;
 }
 
-// Form
+// Form.scss
 .ant-row.ant-form-item {
     margin-bottom: 15px
 }
@@ -207,12 +123,19 @@ html {
 //button
 .ant-btn-primary,
 .ant-btn-primary:hover,
-.ant-btn-primary:focus {
+.ant-btn-primary:focus{
     width: 100%;
     background-color: $secondary-background-color;
     border-color: $primary-border-color;
     height: 40px;
     font-weight: 600;
+}
+
+.ant-input-number:hover,
+.ant-input-number:focus {
+    width: 100%;
+    height: 32px;
+    border-color: $secondary-background-color;
 }
 
 .ant-btn-primary:hover,
@@ -224,11 +147,37 @@ html {
     display: flex;
 }
 
+.ant-input-number {
+    width: 100% !important;
+    height: 32px;
+}
+
 .ant-btn.ant-btn-default {
     background-color: #ddd4d461;
     color: $primary-text-color;
     height: 40px;
     font-weight: 600;
+}
+
+.ant-btn-primary-disabled,
+.ant-btn-primary.disabled,
+.ant-btn-primary[disabled],
+.ant-btn-primary-disabled:hover,
+.ant-btn-primary.disabled:hover,
+.ant-btn-primary[disabled]:hover,
+.ant-btn-primary-disabled:focus,
+.ant-btn-primary.disabled:focus,
+.ant-btn-primary[disabled]:focus,
+.ant-btn-primary-disabled:active,
+.ant-btn-primary.disabled:active,
+.ant-btn-primary[disabled]:active,
+.ant-btn-primary-disabled.active,
+.ant-btn-primary.disabled.active,
+.ant-btn-primary[disabled].active {
+    background-color: $secondary-background-color;
+    border-color: $primary-border-color;
+    opacity: 0.5;
+    color: #fff;
 }
 
 // OTP box 
@@ -307,30 +256,46 @@ h4 {
 
 //flag
 .flag-select {
-  width: 100%;
-  border: 1px solid #d9d9d9;
-  height: 41px;
-  line-height: 2.1;
-  border-radius: 4px;
-  &:hover, &:focus, &:active {
-    border: 1px solid $primary-border-color !important;
-  }
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    height: 41px;
+    line-height: 2.1;
+    border-radius: 4px;
+    &:hover,
+    &:focus,
+    &:active {
+        border: 1px solid $primary-border-color !important;
+    }
     .flag-select__btn {
         font-size: 14px !important;
-        &:focus{
-          outline: none
+        &:focus {
+            outline: none
         }
     }
 }
 
-.flag-select__btn:after{
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.flag-select__btn:after {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
-.flag-select__option:not(.flag-select__option--placeholder):hover, .flag-select__option:not(.flag-select__option--placeholder):focus{
-  background-color: rgba(237, 91, 0, 0.6) !important;
+.flag-select__option:not(.flag-select__option--placeholder):hover,
+.flag-select__option:not(.flag-select__option--placeholder):focus {
+    background-color: rgba(237, 91, 0, 0.6) !important;
+}
+
+.country-code .ant-input-affix-wrapper .ant-input-prefix :not(.anticon),
+.country-code .ant-input-affix-wrapper .ant-input-suffix :not(.anticon) {
+    line-height: 2.3
+}
+
+.flag-select__btn:after {
+    border-top-color: #eee !important;
+}
+
+.flag-select__btn[aria-expanded="true"]:after {
+    border-bottom-color: #eee !important;
 }
 
 //Upload
@@ -339,4 +304,19 @@ h4 {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: flex-end;
+    label {
+        color: $scondary-text-color;
+    }
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    border-radius: 52px;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    border-color: #eee;
+}
+
+.ant-upload.ant-upload-select-picture-card:hover {
+    border-color: $primary-border-color;
 }

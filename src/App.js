@@ -1,4 +1,4 @@
-import './App.scss';
+import './scss/App.scss';
 import FinalForm from './components/FinalForm';
 import SuccessPage from './components/SuccssPage';
 import React, { Component } from 'react';

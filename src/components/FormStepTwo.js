@@ -1,14 +1,14 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox, Upload, Icon, message } from 'antd';
+import { Form, Input, Button, Checkbox, Upload, Icon, message, InputNumber } from 'antd';
 
 
 function normFile(e) {
-    console.log('Upload event:', e);
-    debugger;
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e && e.fileList;
+    console.log('Upload event:', e);   
+     const isJPG = e.file.type === 'image/jpeg';
+     if (!isJPG) {
+         return null;
+     }
+    return e.file;
 };
 
 const uploadButton = (
@@ -57,9 +57,9 @@ const StepTwo = Form.create({
                     getValueFromEvent: normFile,
                     rules: [
                         {
-                          required: true, message: 'Please update your logo!'
+                            required: true, message: 'Please update your logo!'
                         }
-                      ]
+                    ]
                 })(
                     <Upload
                         name="avatar"
@@ -81,7 +81,12 @@ const StepTwo = Form.create({
             </Form.Item>
             <Form.Item label="Email id">
                 {getFieldDecorator('email_id', {
-                    rules: [{ required: true, message: 'Cannot be empty!' }],
+                    rules: [{
+                        require: true, 
+                        message: 'Cannot be empty'},{
+                        type: "email",
+                        message: "The input is not valid E-mail!"
+                    }],
                     initialValue: props.email_id
                 })(<Input placeholder="Input your value here" />)}
             </Form.Item>
@@ -95,7 +100,7 @@ const StepTwo = Form.create({
                 {getFieldDecorator('years_of_experiance', {
                     rules: [{ required: true, message: 'Cannot be empty!' }],
                     initialValue: props.job_title
-                })(<Input placeholder="Input your value here" />)}
+                })(<InputNumber placeholder="Input your value here" />)}
             </Form.Item>
 
             <Form.Item label={null}>

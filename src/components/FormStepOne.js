@@ -41,10 +41,10 @@ const StepOne = Form.create({
                     </Radio.Group>,
                 )}
             </Form.Item>
-            <Form.Item>
-            <ReactFlagsSelect
-             defaultCountry="US"
-             onSelect={props.onSelectFlag} />
+            <Form.Item label={'Country'}>
+                <ReactFlagsSelect
+                    defaultCountry="IN"
+                    onSelect={props.onSelectFlag} />
             </Form.Item>
             <Form.Item label={'State'}>
                 {getFieldDecorator('state', {

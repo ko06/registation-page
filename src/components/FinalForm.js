@@ -158,7 +158,7 @@ class FinalForm extends Component {
                     <div className={'form-area'}>
                         {<div className={'form-header'}>
                             <h1>Enter your OTP</h1>
-                            <h4> For your security, we need ti verify.We sent a 5-digit code to name@domain.com. Please enter it below</h4></div>}
+                            <h4> For your security, we need to verify.We sent a 5-digit code to name@domain.com. Please enter it below</h4></div>}
                         <StepFinal {...step_final_fields} handleConfirmButton={this.handleConfirmButton} handleOTPMessage={this.handleOTPMessage} handleBackButton={this.handleBackButton} submittedValues={this.getFinalStepValue} />
 
                     </div>
