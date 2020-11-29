@@ -82,7 +82,7 @@ const StepTwo = Form.create({
             <Form.Item label="Email id">
                 {getFieldDecorator('email_id', {
                     rules: [{
-                        require: true, 
+                        required: true, 
                         message: 'Cannot be empty'},{
                         type: "email",
                         message: "The input is not valid E-mail!"

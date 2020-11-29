@@ -42,8 +42,8 @@ class FinalForm extends Component {
 
 
     tabSwitch = (key) => {
-        const { step } = this.state;
-        this.setState({ step: key });
+        // const { step } = this.state;
+        // this.setState({ step: key });
     }
 
     handleNextButton = () => {
