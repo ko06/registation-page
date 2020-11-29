@@ -1,14 +1,12 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox, Upload, Icon, message, InputNumber } from 'antd';
 
-
 function normFile(e) {
     console.log('Upload event:', e);   
      const isJPG = e.file.type === 'image/jpeg';
      if (!isJPG) {
          return null;
      }
-    message.success('Logo uploaded successfully!')
     return e.file;
 };
 
@@ -54,7 +52,7 @@ const StepTwo = Form.create({
         <Form onSubmit={validateInput}>
             <Form.Item className={'upload-container'} label="Upload your company logo">
                 {getFieldDecorator('upload', {
-                    valuePropName: 'fileList',
+                    valuePropName: 'file',
                     getValueFromEvent: normFile,
                     rules: [
                         {
@@ -67,10 +65,11 @@ const StepTwo = Form.create({
                         listType="picture-card"
                         className="avatar-uploader"
                         showUploadList={false}
-                        action="//jsonplaceholder.typicode.com/posts/"
+                        action="https://run.mocky.io/v3/bdbb5dde-23b2-4d32-ab39-d7ec59f0d760"
                         beforeUpload={beforeUpload}
+                        onChange={(e) => props.handleImageChange(e)}
                     >
-                        {uploadButton}
+                    {props.imageUrl ? <img src={props.imageUrl} alt="avatar" style={{ width: '75%' }} /> : uploadButton}
                     </Upload>,
                 )}
             </Form.Item>

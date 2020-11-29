@@ -1,11 +1,8 @@
 import React from 'react'
-import { Form, Input, Button, Select, Radio } from 'antd';
+import { Form, Input, Button, Radio } from 'antd';
 import CountryPhoneCode from "antd-country-phone-input";
-import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
-
-
-const { Option } = Select;
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 const StepOne = Form.create({
     name: 'step_one'
@@ -41,40 +38,31 @@ const StepOne = Form.create({
                     </Radio.Group>,
                 )}
             </Form.Item>
-            <Form.Item label={'Country'}>
-                <ReactFlagsSelect
-                    defaultCountry="IN"
-                    onSelect={props.onSelectFlag} />
+
+            <Form.Item className={'custom-select'} label={'Country'}>
+                {getFieldDecorator("country_name", {
+                    rules: [
+                        { required: true, message: 'Please select a country name'}],
+                })(
+                    <CountryDropdown
+                        value={props.country_name} onChange={(val) => props.selectCountry(val)} />
+                )}
             </Form.Item>
-            <Form.Item label={'State'}>
+
+            <Form.Item className={'custom-select'} label={'State'}>
                 {getFieldDecorator('state', {
                     rules: [
-                        { required: true, message: 'Please select a state' },
+                        { required: true, message: 'Please select a state name'},
                     ],
                 })(
-                    <Select
-                        placeholder="Select property type"
-                        className={'form-item select-md'}
-                        optionFilterProp="children"
-                        showSearch={true}
-                        filterOption={(input, option) =>
-                            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }
-                    >
-                        <Option value="tamilnadu">TamilNadu</Option>
-                        <Option value="Mumbai">Mumbai</Option>
-                        <Option value="Delhi">Delhi</Option>
-                        <Option value="goa">goa</Option>
-                        <Option value="jammu">Jammu</Option>
-                        <Option value="karnadaga">Karnadaga</Option>
-
-                    </Select>,
+                    <RegionDropdown
+                        value={props.state} country={props.country_name} onChange={(val) => props.selectRegion(val)} />
                 )}
             </Form.Item>
             <Form.Item className={'country-code'} label={'Phone'}>
                 {getFieldDecorator("country_phone", {
                     rules: [
-                        { required: true, message: 'Please select a Phone number' }],
+                        { required: true, message: 'Please select a phone number' }],
                 })(<CountryPhoneCode />)}
             </Form.Item>
             <Form.Item>
